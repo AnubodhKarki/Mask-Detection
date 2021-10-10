@@ -22,7 +22,7 @@ import os
 
 
 
-# Initializing the initial learning rate, number of epochs to train for, & batch size
+# Initializing the initial learning rate, number  of epochs to train for, & batch size
 # Learning rate is less so that loss is calculated properly; to get better accuracy soon.
 INIT_LR = 1e-4 #0.0001
 # Epochs: number times that the learning algorithm will work through the entire training dataset.

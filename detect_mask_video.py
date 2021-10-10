@@ -80,8 +80,9 @@ faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 # load the face mask detector model from disk
 maskNet = load_model("mask_detector.model")
 
-# initialize the video stream
+# initialize the video stream/Loading Camera
 print("[INFO] starting video stream...")
+# Source 0 uses primary cameras
 vs = VideoStream(src=0).start()
 
 # loop over the frames from the video stream
@@ -105,6 +106,7 @@ while True:
 		# determine the class label and color we'll use to draw
 		# the bounding box and text
 		label = "Mask" if mask > withoutMask else "No Mask"
+		# BGR color coding
 		color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
 
 		# include the probability in the label
@@ -120,10 +122,10 @@ while True:
 	cv2.imshow("Frame", frame)
 	key = cv2.waitKey(1) & 0xFF
 
-	# if the `q` key was pressed, break from the loop
-	if key == ord("q"):
+	# if the `x` key is pressed, break the loop
+	if key == ord("x"):
 		break
 
-# do a bit of cleanup
+# End task and cleap up
 cv2.destroyAllWindows()
 vs.stop()
